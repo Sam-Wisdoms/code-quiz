@@ -59,8 +59,36 @@ startBtnElement.addEventListener('click', () => {
         let currentQuestion = `Q${index + 1 }. ${questionObj.question}`
         let currentAnswerOptions = ""
         questionObj.options.forEach(Option =>{
-            
+            currentAnswerOptions += `
+            <li class = "single-option">${option}</li>    ` // compare/check
         })
+        return {currentQuestion, currentAnswerOptions}
+    })
+    const allCorrectAnswers = questions.map(questionObj => {
+        return questionObj.answer
+    })
+
+    let currentQuestionIndex = 0;
+
+    function displayQuestion() {
+        questionElement.classList.remove('hide');
+        questionElement.innerText = allQuestions[currentQuestionIndex].currentQuestion //
+        questionChoicesElement.innerHTML = allQuestions[currentQuestionIndex].currentAnswerOptions
+    }
+
+    displayQuestion();
+
+    questionElement.addEventListener('click', (event) =>{
+        if(event.target.classList.contains('single-option')) {
+            questionElement.classList.add('hide')
+
+            if(event.target.innerText === allCorrectAnswers[currentQuestionIndex]) {
+                feedbackElement.classList.remove('hide') // compare/check
+                feebackElement.innerText = 'Correct Answer'
+                finalScore = 1 // check
+                console.log('allCorrectAnswer!') // check
+            }
+        }
     })
 })
 
