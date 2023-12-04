@@ -21,6 +21,33 @@ const questionChoicesElement = document.querySelector('#coices')
 const feebackElement = document.querySelector('#feedback')
 const finalScoreElement = document.querySelector('#final-score')
 
+// Initializations 
+let remainingTime = 100;
+let finalScore = 0;
+let timerInterval;
+
+// Write function for ending the quiz
+function endQuiz() {
+    questionElement.classList.add('hide')
+    endScreenElement.classList.remove('hide')
+    finalScoreElement.innerText = finalScore;
+    timerElement.innerText = 0;
+}
+
+timerElement.innerText = `${remainingTime}s`
+
+// Function for updating timer
+function updateTimer() {
+    timerElement.innerText = `${remainingTime}s`
+
+// condition for ending the quiz
+    if(remainingTime) {
+        clearInterval(timerInterval)
+        endQuiz()
+    } else{
+        remainingTime -= 1
+    }
+}
 
 
 
