@@ -49,6 +49,21 @@ function updateTimer() {
     }
 }
 
+// Function for eventListener
+startBtnElement.addEventListener('click', () => {
+    startScreenElement.classList.add('hide')
+    timerInterval = setInterval(updateTimer, 1000)
+    updateTimer()
+
+    const allQuestions = questions.map((questionObj, index) => {
+        let currentQuestion = `Q${index + 1 }. ${questionObj.question}`
+        let currentAnswerOptions = ""
+        questionObj.options.forEach(Option =>{
+            
+        })
+    })
+})
+
 
 
 
