@@ -5,8 +5,8 @@ const questions = [
       answer: 0
     },
     {
-      question: 'How are comments written in JavaScript?',
-      options: ['// This is a comment', '# This is a comment', '/ This is a comment', '* This is a comment *'],
+      question: 'Which one is not a step in the commit process?',
+      options: ['// git add .', '# git commit -m', '// git control', 'git push'],
       answer: 0
     },
     {
@@ -14,7 +14,7 @@ const questions = [
       options: ['var', 'let', 'const', 'variable'],
       answer: 0
     },
-    // Add more questions as needed
+   
   ];
 
   console.log(questions)
