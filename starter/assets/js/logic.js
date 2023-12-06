@@ -1,14 +1,4 @@
-// const startQuizElement = document.querySelector('#start')
-
-// startQuizElement.innerText = "Begin quiz"
-
-// document.getElementById('start').innerText = "Begin QUiz"
-
-// document.getElementById('start').style.backgroundColor = 'Green'
-
-// import question from question file
-
-// import {questions} from "./questions.js",
+import { questions } from "./questions";
 
 // select elements based on class and id from html
 const startScreenElement = document.querySelector('#start-screen');
@@ -20,13 +10,16 @@ const questionTitleElement = document.querySelector('#question-title');
 const questionChoicesElement = document.querySelector('#coices')
 const feebackElement = document.querySelector('#feedback')
 const finalScoreElement = document.querySelector('#final-score')
+const submitBtnElement = document.querySelector('#submit')
 
 // Initializations 
 let remainingTime = 100;
 let finalScore = 0;
 let timerInterval;
 
-// Write function for ending the quiz
+let mode = "light"
+
+// This is function for ending the quiz
 function endQuiz() {
     questionElement.classList.add('hide')
     endScreenElement.classList.remove('hide')
@@ -41,7 +34,7 @@ function updateTimer() {
     timerElement.innerText = `${remainingTime}s`
 
 // condition for ending the quiz
-    if(remainingTime) {
+    if(remainingTime <= 0) {
         clearInterval(timerInterval)
         endQuiz()
     } else{
@@ -49,18 +42,18 @@ function updateTimer() {
     }
 }
 
-// Function for eventListener
 startBtnElement.addEventListener('click', () => {
     startScreenElement.classList.add('hide')
     timerInterval = setInterval(updateTimer, 1000)
     updateTimer()
 
     const allQuestions = questions.map((questionObj, index) => {
-        let currentQuestion = `Q${index + 1 }. ${questionObj.question}`
+        let currentQuestion = `Q${index + 1 }. ${questionObj.question}` 
         let currentAnswerOptions = ""
         questionObj.options.forEach(Option =>{
             currentAnswerOptions += `
-            <li class = "single-option">${option}</li>    ` // compare/check
+            <li class = "single-option">${option}</li>
+            ` 
         })
         return {currentQuestion, currentAnswerOptions}
     })
@@ -72,7 +65,7 @@ startBtnElement.addEventListener('click', () => {
 
     function displayQuestion() {
         questionElement.classList.remove('hide');
-        questionElement.innerText = allQuestions[currentQuestionIndex].currentQuestion //
+        questionTitleElement.innerText = allQuestions[currentQuestionIndex].currentQuestion
         questionChoicesElement.innerHTML = allQuestions[currentQuestionIndex].currentAnswerOptions
     }
 
@@ -83,15 +76,14 @@ startBtnElement.addEventListener('click', () => {
             questionElement.classList.add('hide')
 
             if(event.target.innerText === allCorrectAnswers[currentQuestionIndex]) {
-                feedbackElement.classList.remove('hide') // compare/check
+                feedbackElement.classList.remove('hide') 
                 feebackElement.innerText = 'Correct Answer'
-                finalScore = 1 // check
-                console.log('allCorrectAnswer!') // check
+                finalScore = 1 
+                console.log('allCorrectAnswer!') 
             }
         }
     })
 })
-
 
 
 

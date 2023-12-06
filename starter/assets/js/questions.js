@@ -1,20 +1,34 @@
-const questions = [
-    {
-      question: 'Which one is not a method by which you can convert a string into a number?',
-      options: ['parseInt', 'Number', 'Array', 'Math.floor()'],
-      answer: 0
-    },
-    {
-      question: 'Which one is not a step in the commit process?',
-      options: ['// git add .', '# git commit -m', '// git control', 'git push'],
-      answer: 0
-    },
-    {
-      question: 'Which keyword is used to declare a variable in JavaScript?',
-      options: ['var', 'let', 'const', 'variable'],
-      answer: 0
-    },
-   
-  ];
+export const questions = [
+  {
+    question: 'Which is an incorrect way to declare a variable in JavaScript?',
+    options: ['var x = 5;', 'variable x = 5;', 'let x = 5;', 'const x = 5;'],
+    answer: 'variable x = 5;'
+  },
+  {
+    question: 'Which function is used to print content to the console?',
+    options: ['console.log()', 'log.console()', 'print()', 'display()'],
+    answer: 'console.log()'
+  },
+  {
+    question: 'What does the "DOM" stand for in web development?',
+    options: ['Data Object Model', 'Dynamic Object Model', 'Document Object Model', 'Design Object Model'],
+    answer: 'Document Object Model'
+  },
+  {
+    question: 'How do you comment a single line in JavaScript?',
+    options: ['/* This is a comment */', '// This is a comment', '# This is a comment', '-- This is a comment'],
+    answer: '// This is a comment'
+  },
+  {
+    question: 'What does the "=== operator" do in JavaScript?',
+    options: [
+      'Checks for equality with type conversion',
+      'Assigns a value to a variable',
+      'Concatenates two strings',
+      'Compares values without type conversion'
+    ],
+    answer: 'Compares values without type conversion'
+  },
+];
 
   console.log(questions)
