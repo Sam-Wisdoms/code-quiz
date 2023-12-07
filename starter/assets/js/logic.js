@@ -1,15 +1,16 @@
-import { questions } from "./questions";
+import { questions } from "./questions.js";
 
 // select elements based on class and id from html
 const startScreenElement = document.querySelector('#start-screen')
 const endScreenElement = document.querySelector('#end-screen')
-const startBtn = document.querySelector('#start')
+const startBtnElement = document.querySelector('#start')
 const timerElement = document.querySelector('#time')
 const questionElement = document.querySelector('#questions')
 const questionTitleElement = document.querySelector('#question-title')
 const questionChoicesElement = document.querySelector('#coices')
 const feedbackElement = document.querySelector('#feedback')
 const finalScoreElement = document.querySelector('#final-score')
+const initialsElement = document.querySelector('#initials')
 const submitBtnElement = document.querySelector('#submit')
 
 // Initializations 
@@ -17,14 +18,12 @@ let remainingTime = 100
 let finalScore = 0
 let timerInterval
 
-let mode = "light"
-
 // This is function for ending the quiz
 function endQuiz() {
     questionElement.classList.add('hide')
     endScreenElement.classList.remove('hide')
     finalScoreElement.innerText = finalScore;
-    timerElement.innerText = 0;
+    remainingTime = 0;
 }
 
 timerElement.innerText = `${remainingTime}s`
@@ -43,16 +42,17 @@ function updateTimer() {
 }
 
 startBtnElement.addEventListener('click', () => {
+    // console.log('test')
     startScreenElement.classList.add('hide')
     timerInterval = setInterval(updateTimer, 1000)
     updateTimer()
 
     const allQuestions = questions.map((questionObj, index) => {
-        let currentQuestion = `Q${index + 1 }. ${questionObj.question}` 
+        let currentQuestion = `Q${index + 1}. ${questionObj.question}` 
         let currentAnswerOptions = ""
-        questionObj.options.forEach(Option =>{
+        questionObj.options.forEach(option =>{
             currentAnswerOptions += `
-            // <li class = "single-option">${option}</li>
+            // <li class = "single-option">${option}</li> //////
             ` 
         })
         return {currentQuestion, currentAnswerOptions}
@@ -66,9 +66,8 @@ startBtnElement.addEventListener('click', () => {
     function displayQuestion() {
         questionElement.classList.remove('hide')
         questionTitleElement.innerText = allQuestions[currentQuestionIndex].currentQuestion
-        questionChoicesElement.innerHTML = allQuestions[currentQuestionIndex].currentAnswerOptions
+        questionChoicesElement.innerHTML = allQuestions[currentQuestionIndex].currentAnswerOptions;
     }
-
     displayQuestion();
 
     questionElement.addEventListener('click', (event) =>{
