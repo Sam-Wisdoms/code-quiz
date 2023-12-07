@@ -7,11 +7,13 @@ const startBtnElement = document.querySelector('#start')
 const timerElement = document.querySelector('#time')
 const questionElement = document.querySelector('#questions')
 const questionTitleElement = document.querySelector('#question-title')
-const questionChoicesElement = document.querySelector('#coices')
+const questionChoicesElement = document.querySelector('#choices')
 const feedbackElement = document.querySelector('#feedback')
 const finalScoreElement = document.querySelector('#final-score')
 const initialsElement = document.querySelector('#initials')
 const submitBtnElement = document.querySelector('#submit')
+const correctAnswerAudioElement = document.getElementById('correctAnswerAudio')
+const incorrectAnserAudioElement = document.getElementById('incorrectAnserAudio')
 
 // Initializations 
 let remainingTime = 100
@@ -52,7 +54,7 @@ startBtnElement.addEventListener('click', () => {
         let currentAnswerOptions = ""
         questionObj.options.forEach(option =>{
             currentAnswerOptions += `
-            // <li class = "single-option">${option}</li> //////
+             <li class = "single-option">${option}</li>
             ` 
         })
         return {currentQuestion, currentAnswerOptions}
@@ -91,13 +93,18 @@ startBtnElement.addEventListener('click', () => {
             } else {
                 endQuiz()
             }
+
+            // function playCorrectAnsweraudio() {
+            //     correctAnswerAudioElement.pl
+            // }
+            
         }
     })
 })
 
 submitBtnElement.addEventListener('click', () => {
     const highScoresData = JSON.parse(localStorage.getItem('highScores')) || {}
-    const userInitials = userInitials.value
+    const userInitials = initialsElement.value
     const userScoreData = {[userInitials]: finalScore}
     Object.assign(highScoresData, userScoreData)
     const updatedHighScores = JSON.stringify(highScoresData)

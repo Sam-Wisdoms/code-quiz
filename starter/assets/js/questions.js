@@ -30,19 +30,3 @@ export const questions = [
     answer: 'Compares values without type conversion'
   },
 ];
-
-// for (let i = 0; i < questions.length; i++) {
-//   const newDiv = document.createElement('div');
-//   newDiv.classList.add('new-class');
-//   newDiv.innerHTML = `<h1 id = "question-title">${questions[i].question}</h1>
-//   <ol>
-//     <li class = "optionsClass">${questions[i].options.length}</li>
-//   </ol>`;
-
-// document.getElementById('questions').appendChild(newDiv);
-// }
-
-
-
-
-  // console.log(questions)
