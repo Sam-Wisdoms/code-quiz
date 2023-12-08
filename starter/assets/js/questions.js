@@ -1,3 +1,4 @@
+  // Questions, options and answers for the quiz
 export const questions = [
   {
     question: 'Which is an incorrect way to declare a variable in JavaScript?',

@@ -12,8 +12,8 @@ const feedbackElement = document.querySelector('#feedback')
 const finalScoreElement = document.querySelector('#final-score')
 const initialsElement = document.querySelector('#initials')
 const submitBtnElement = document.querySelector('#submit')
-const correctAnswerAudioElement = document.getElementById('correctAnswerAudio')
-const incorrectAnserAudioElement = document.getElementById('incorrectAnserAudio')
+// const correctAnswerAudioElement = document.getElementById('correctAnswerAudio')
+// const incorrectAnserAudioElement = document.getElementById('incorrectAnserAudio')
 
 // Initializations 
 let remainingTime = 100
@@ -43,12 +43,14 @@ function updateTimer() {
     }
 }
 
+// EVentListener for start screen
 startBtnElement.addEventListener('click', () => {
     // console.log('test')
     startScreenElement.classList.add('hide')
     timerInterval = setInterval(updateTimer, 1000)
     updateTimer()
 
+    
     const allQuestions = questions.map((questionObj, index) => {
         let currentQuestion = `Q${index + 1}. ${questionObj.question}` 
         let currentAnswerOptions = ""
@@ -65,6 +67,7 @@ startBtnElement.addEventListener('click', () => {
 
     let currentQuestionIndex = 0;
 
+    // function for displaying questions
     function displayQuestion() {
         questionElement.classList.remove('hide')
         questionTitleElement.innerText = allQuestions[currentQuestionIndex].currentQuestion
@@ -86,7 +89,7 @@ startBtnElement.addEventListener('click', () => {
                 feedbackElement.innerText = 'Wrong Answer'
                 remainingTime -= 10;
             }
-
+            // conditional statement for displaying questions
             currentQuestionIndex +=1;
             if(currentQuestionIndex < allQuestions.length && remainingTime > 0) {
                 displayQuestion();
@@ -94,14 +97,21 @@ startBtnElement.addEventListener('click', () => {
                 endQuiz()
             }
 
-            // function playCorrectAnsweraudio() {
-            //     correctAnswerAudioElement.pl
-            // }
+        //  const correctAudio = new Audio('./assets/sfx/correct.wav')
+        //  const incorrectAudio = new Audio('./assets/sfx/incorrect.wav')
+
+        //  document.getElementById('start').addEventListener('click', function() {
+        //     correctAudio.play()
+        //  });
+
+        //  document.getElementById('start').addEventListener('click', function() {
+        //     incorrectAudio.play()
+        //  });
             
         }
     })
 })
-
+    // EventListener on various items
 submitBtnElement.addEventListener('click', () => {
     const highScoresData = JSON.parse(localStorage.getItem('highScores')) || {}
     const userInitials = initialsElement.value
