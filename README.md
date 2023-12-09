@@ -15,7 +15,7 @@ Views concerning the project are very much welcome and please feel free to
 contribute to this project if the goal is to improve the code base or to add more features to the project itself to make it better and more user friendly.
 
 ## Link to the Deployed Project:
-https://sam-wisdoms.github.io/timed-coding-quiz/
+https://sam-wisdoms.github.io/timed-coding-quiz/ 
   
 
 ## GitHub Repository for the Project:
