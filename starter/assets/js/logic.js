@@ -45,7 +45,6 @@ function updateTimer() {
 
 // EVentListener for start screen
 startBtnElement.addEventListener('click', () => {
-    // console.log('test')
     startScreenElement.classList.add('hide')
     timerInterval = setInterval(updateTimer, 1000)
     updateTimer()
@@ -83,7 +82,6 @@ startBtnElement.addEventListener('click', () => {
                 feedbackElement.classList.remove('hide') 
                 feedbackElement.innerText = 'Correct Answer'
                 finalScore += 1 
-                // console.log('allCorrectAnswer!') 
             } else {
                 feedbackElement.classList.remove("hide")
                 feedbackElement.innerText = 'Wrong Answer'
