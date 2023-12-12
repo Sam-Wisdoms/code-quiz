@@ -109,7 +109,7 @@ startBtnElement.addEventListener('click', () => {
         }
     })
 })
-    // EventListener on various items
+    // EventListener on the submit button
 submitBtnElement.addEventListener('click', () => {
     const highScoresData = JSON.parse(localStorage.getItem('highScores')) || {}
     const userInitials = initialsElement.value
@@ -117,7 +117,7 @@ submitBtnElement.addEventListener('click', () => {
     Object.assign(highScoresData, userScoreData)
     const updatedHighScores = JSON.stringify(highScoresData)
     localStorage.setItem('highScores', updatedHighScores)
-    window.location.href = '../../highscores.html';
+    window.location.href = 'highscores.html';
 })
 
 
